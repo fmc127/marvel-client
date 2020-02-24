@@ -1,0 +1,19 @@
+{{#each characters as |character|}}
+  {{log character}}
+  <section data-id="{{character.id}}">
+    <h6>Alias:</h6>
+    <h3>
+      {{limit character.alias 15}}
+    </h3>
+    <h6>Alias:</h6>
+    <p>
+      {{#if character.alias}}
+        {{character.alias}}
+      {{else}}
+        No author provided.
+      {{/if}}
+    </p>
+    {{> remove-character id=character.id}}
+  </section>
+
+{{/each}}

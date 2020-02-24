@@ -67,7 +67,7 @@ const onSignOutSuccess = function (response) {
 
 const onSignOutFailure = function (response) {
   $('#message').text('Sign out failed')
-  $('#sign-up').trigger('reset')
+  $('#sign-out').trigger('reset')
 }
 
 const onSearchCharacterSuccess = function (response) {
@@ -81,33 +81,35 @@ const onSearchCharacterFailure = function (response) {
 }
 
 const onCreateCharacterSuccess = function (response) {
-  $('#message').text('Character created!')
-  $('#sign-up').trigger('reset')
+  $('#message').html('Character created!')
+  $('#create-character').trigger('reset')
+  console.log('success')
 }
 
 const onCreateCharacterFailure = function (response) {
   $('#message').text('Failed to create character')
-  $('#sign-up').trigger('reset')
+  $('#create-character').trigger('reset')
+  console.log('failure')
 }
 
 const onUpdateCharacterSuccess = function (response) {
   $('#message').text('Updated Character!')
-  $('#sign-up').trigger('reset')
+  $('#update-character').trigger('reset')
 }
 
 const onUpdateCharacterFailure = function (response) {
   $('#message').text('Failed to update character')
-  $('#sign-up').trigger('reset')
+  $('#update-character').trigger('reset')
 }
 
 const onDeleteCharacterSuccess = function (response) {
   $('#message').text('Deleted Character!')
-  $('#sign-up').trigger('reset')
+  $('#delete-character').trigger('reset')
 }
 
 const onDeleteCharacterFailure = function (response) {
   $('#message').text('Failed to delete character')
-  $('#sign-up').trigger('reset')
+  $('#delete-character').trigger('reset')
 }
 
 module.exports = {

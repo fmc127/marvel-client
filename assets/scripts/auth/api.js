@@ -40,9 +40,53 @@ const signOut = function (data) {
   })
 }
 
+const searchCharacter = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/characters',
+    method: 'GET',
+    data: data
+  })
+}
+
+const createCharacter = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/characters',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+const updateCharacter = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/characters/' + data.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+const deleteCharacter = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/characters',
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  searchCharacter,
+  createCharacter,
+  updateCharacter,
+  deleteCharacter
 }

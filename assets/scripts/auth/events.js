@@ -61,32 +61,32 @@ const onSignOut = function (event) {
 
 const onSearch = function (event) {
   event.preventDefault()
-  api.signOut()
-    .then(ui.onCreateSuccess)
-    .catch(ui.onCreateFailure)
+  api.searchCharacter()
+    .then(ui.onSearchSuccess)
+    .catch(ui.onSearchFailure)
 }
 
-const onCreate = function () {
+const onCreate = function (event) {
   event.preventDefault()
   const form = event.target
   const data = getFormFields(form)
-  api.signOut()
+  api.createCharacter(data)
     .then(ui.onCreateSuccess)
     .catch(ui.onCreateFailure)
 }
 
 const onUpdate = function (event) {
   event.preventDefault()
-  api.signOut()
-    .then(ui.onCreateSuccess)
-    .catch(ui.onCreateFailure)
+  api.updateCharacter()
+    .then(ui.onUpdateSuccess)
+    .catch(ui.onUpdateFailure)
 }
 
 const onDelete = function (event) {
   event.preventDefault()
-  api.signOut()
-    .then(ui.onCreateSuccess)
-    .catch(ui.onCreateFailure)
+  api.deleteCharacter()
+    .then(ui.onDeleteSuccess)
+    .catch(ui.onDeleteFailure)
 }
 
 module.exports = {
