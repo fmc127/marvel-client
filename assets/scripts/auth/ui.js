@@ -22,6 +22,10 @@ const onSignInSuccess = function (response) {
   $('#message').text(response.user.email + ' Successfully signed in')
   $('#sign-in').trigger('reset')
   store.user = response.user
+  $('#search-character').show()
+  $('#create-character').show()
+  $('#update-character').show()
+  $('#delete-character').show()
   $('#change-password').show()
   $('#sign-out').show()
   $('#sign-in').hide()
@@ -46,6 +50,10 @@ const onChangePasswordFailure = function (response) {
 
 const onSignOutSuccess = function (response) {
   $('#message').text('Successfully signed out!')
+  $('#search-character').hide()
+  $('#create-character').hide()
+  $('#update-character').hide()
+  $('#delete-character').hide()
   $('#change-password').hide()
   $('#change-password').trigger('reset')
   $('#sign-out').hide()
@@ -59,6 +67,47 @@ const onSignOutSuccess = function (response) {
 
 const onSignOutFailure = function (response) {
   $('#message').text('Sign out failed')
+  $('#sign-up').trigger('reset')
+}
+
+const onSearchCharacterSuccess = function (response) {
+  $('#message').text('Found your character!')
+  $('#search-character').trigger('reset')
+}
+
+const onSearchCharacterFailure = function (response) {
+  $('#message').text('Could not locate character')
+  $('#search-character').trigger('reset')
+}
+
+const onCreateCharacterSuccess = function (response) {
+  $('#message').text('Character created!')
+  $('#sign-up').trigger('reset')
+}
+
+const onCreateCharacterFailure = function (response) {
+  $('#message').text('Failed to create character')
+  $('#sign-up').trigger('reset')
+}
+
+const onUpdateCharacterSuccess = function (response) {
+  $('#message').text('Updated Character!')
+  $('#sign-up').trigger('reset')
+}
+
+const onUpdateCharacterFailure = function (response) {
+  $('#message').text('Failed to update character')
+  $('#sign-up').trigger('reset')
+}
+
+const onDeleteCharacterSuccess = function (response) {
+  $('#message').text('Deleted Character!')
+  $('#sign-up').trigger('reset')
+}
+
+const onDeleteCharacterFailure = function (response) {
+  $('#message').text('Failed to delete character')
+  $('#sign-up').trigger('reset')
 }
 
 module.exports = {
@@ -69,5 +118,13 @@ module.exports = {
   onChangePasswordSuccess,
   onChangePasswordFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  onSearchCharacterFailure,
+  onSearchCharacterSuccess,
+  onCreateCharacterFailure,
+  onCreateCharacterSuccess,
+  onUpdateCharacterSuccess,
+  onUpdateCharacterFailure,
+  onDeleteCharacterSuccess,
+  onDeleteCharacterFailure
 }

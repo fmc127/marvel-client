@@ -1,7 +1,6 @@
 'use strict'
 
 const authEvents = require('./auth/events')
-
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -11,10 +10,16 @@ const authEvents = require('./auth/events')
 $(() => {
   $('#change-password').hide()
   $('#sign-out').hide()
-  $('#new-game').hide()
-  $('#gameBoard').hide()
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('submit', authEvents.onSignOut)
+  $('#search-character').on('submit', authEvents.onSignIn)
+  $('#update-character').on('submit', authEvents.onSignIn)
+  $('#delete-character').on('submit', authEvents.onSignIn)
+  $('#create-character').on('submit', authEvents.onSignIn)
+  $('#search-character').hide()
+  $('#update-character').hide()
+  $('#delete-character').hide()
+  $('#create-character').hide()
 })

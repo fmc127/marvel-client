@@ -4,26 +4,15 @@
 const getFormFields = require('./../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
-const store = require('./../store')
-const app = require('./../app')
+// const store = require('./../store')
+// const app = require('./../app')
 // #B this function was called (from app.js). it is an event and its transforming
 // data from what a user typed into the browser, through the form(html),
 // through the event handler(app.js), to here(event.js)
 // clickCell is a variable that is storing a function
 const clickCell = function (event) {
   event.preventDefault()
-  // creating a piece of data that is a variable (called form)
-  // and that data is taking in the event (the parameter) and applying
-  // the function (target), the target is the form (submit button in this case)
-  // being clicked
-  // the (form) is the input. the getFormFields is the function that is taking in
-  // the (form) input, the output of that function is the const data
-  // creating a piece of data that is a variable (called data)
 }
-
-// #D this function was called (from app.js). it is an event and its transforming
-// data from what a user typed into the browser, through the form(html),
-// through the event handler(app.js), to here(event.js)
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -70,10 +59,44 @@ const onSignOut = function (event) {
     .catch(ui.onSignOutFailure)
 }
 
+const onSearch = function (event) {
+  event.preventDefault()
+  api.signOut()
+    .then(ui.onCreateSuccess)
+    .catch(ui.onCreateFailure)
+}
+
+const onCreate = function () {
+  event.preventDefault()
+  const form = event.target
+  const data = getFormFields(form)
+  api.signOut()
+    .then(ui.onCreateSuccess)
+    .catch(ui.onCreateFailure)
+}
+
+const onUpdate = function (event) {
+  event.preventDefault()
+  api.signOut()
+    .then(ui.onCreateSuccess)
+    .catch(ui.onCreateFailure)
+}
+
+const onDelete = function (event) {
+  event.preventDefault()
+  api.signOut()
+    .then(ui.onCreateSuccess)
+    .catch(ui.onCreateFailure)
+}
+
 module.exports = {
   clickCell,
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
+  onSignOut,
+  onCreate,
+  onUpdate,
+  onSearch,
+  onDelete
 }

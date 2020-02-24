@@ -2,7 +2,7 @@
 
 let apiUrl
 const apiUrls = {
-  production: 'https://dashboard.heroku.com/apps/marvel-database',
+  production: 'https://marvel-database.herokuapp.com/',
   development: 'http://localhost:4741'
 }
 
