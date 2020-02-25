@@ -73,12 +73,22 @@ const onUpdate = function (event) {
     .catch(ui.onUpdateCharacterFailure)
 }
 
+// const onDelete = function (event) {
+//   event.preventDefault()
+//   // const id = $(event.target).data('id')
+//   api.deleteCharacter(event)
+//     .then(function () {
+//       onShow(event)
+//     })
+//     .catch(ui.failure)
+// }
+
 const onDelete = function (event) {
   event.preventDefault()
-  const id = $(event.target).data('id')
-  api.deleteCharacter(id)
+  // const id = $(event.target).data('id')
+  api.deleteCharacter(event)
     .then(function () {
-      onShowCharacter(event)
+      onShow(event)
     })
     .catch(ui.failure)
 }
@@ -93,7 +103,7 @@ const onClear = function (event) {
 const addHandlers = () => {
   $('#getCharactersButton').on('click', onShow)
   $('#clearCharactersButton').on('click', onClear)
-  $('.content').on('click', '.remove-character', onDelete)
+  $('.all-characters').on('click', '.remove-character', onDelete)
 }
 
 module.exports = {

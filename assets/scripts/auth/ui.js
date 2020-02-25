@@ -81,20 +81,20 @@ const onShowCharacterSuccess = function (data) {
 }
 
 const onShowCharacterFailure = function (response) {
-  $('#message').text('Could not locate character')
+  $('#message').text('Could not locate characters')
   $('#show-character').trigger('reset')
 }
 
 const onCreateCharacterSuccess = function (response) {
   $('#message').text('Character created!')
   $('#create-character').trigger('reset')
-  console.log('success')
+  // console.log('success')
 }
 
 const onCreateCharacterFailure = function (response) {
   $('#message').text('Failed to create character')
   $('#create-character').trigger('reset')
-  console.log('failure')
+  // console.log('failure')
 }
 
 const onUpdateCharacterSuccess = function (response) {
@@ -109,12 +109,12 @@ const onUpdateCharacterFailure = function (response) {
 
 const onDeleteCharacterSuccess = function (response) {
   $('#message').text('Deleted Character!')
-  $('#delete-character').trigger('reset')
+  $('#remove-character').trigger('reset')
 }
 
 const onDeleteCharacterFailure = function (response) {
   $('#message').text('Failed to delete character')
-  $('#delete-character').trigger('reset')
+  $('#remove-character').trigger('reset')
 }
 
 const getCharactersSuccess = (data) => {

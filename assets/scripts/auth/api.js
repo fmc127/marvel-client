@@ -94,13 +94,16 @@ const updateCharacter = function (data) {
 //   })
 // }
 
-const deleteCharacter = function (id) {
+const deleteCharacter = function (event) {
+  console.log(event)
+  const id = $(event.target).data('id')
+  console.log(id)
   return $.ajax({
     url: config.apiUrl + '/characters/' + id,
-    method: 'DELETE'
-    // headers: {
-    //   Authorization: 'Token token=' + store.user.token
-    // }
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
