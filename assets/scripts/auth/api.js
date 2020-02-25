@@ -40,11 +40,11 @@ const signOut = function (data) {
   })
 }
 
-const searchCharacter = function (data) {
+const showCharacter = function () {
   return $.ajax({
     url: config.apiUrl + '/characters',
-    method: 'GET',
-    data: data
+    method: 'GET'
+    // data: data
   })
 }
 
@@ -70,13 +70,37 @@ const updateCharacter = function (data) {
   })
 }
 
-const deleteCharacter = function (data) {
+// const clearCharacter = function () {
+//   return $.ajax({
+//     url: config.apiUrl + '/characters',
+//     method: '',
+//     data: data
+//   })
+// }
+
+// const deleteCharacter = function (id) {
+//   return $.ajax({
+//     url: config.apiUrl + '/characters',
+//     method: 'DELETE',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
+
+// const getCharacters = function () {
+//   return $.ajax({
+//     url: config.apiUrl + '/characters'
+//   })
+// }
+
+const deleteCharacter = function (id) {
   return $.ajax({
-    url: config.apiUrl + '/characters',
-    method: 'DELETE',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    url: config.apiUrl + '/characters/' + id,
+    method: 'DELETE'
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // }
   })
 }
 
@@ -85,8 +109,10 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  searchCharacter,
+  showCharacter,
   createCharacter,
   updateCharacter,
   deleteCharacter
+  // getCharacters
+  // clearCharacter
 }

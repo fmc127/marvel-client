@@ -1,7 +1,7 @@
 {{#each characters as |character|}}
   {{log character}}
   <section data-id="{{character.id}}">
-    <h6>Alias:</h6>
+    <h6>Character Information:</h6>
     <h3>
       {{limit character.alias 15}}
     </h3>
@@ -10,8 +10,32 @@
       {{#if character.alias}}
         {{character.alias}}
       {{else}}
-        No author provided.
+        No alias provided.
       {{/if}}
+    </p>
+    <h6>Real Name:</h6>
+    <p>
+      {{#if character.real_name}}
+        {{character.real_name}}
+      {{else}}
+        No real name provided.
+      {{/if}}
+    </p>
+    <h6>Superpower:</h6>
+    <p>
+      {{#if character.superpower}}
+        {{character.superpower}}
+      {{else}}
+        No superpower provided.
+      {{/if}}
+      <h6>Place of Origin:</h6>
+      <p>
+        {{#if character.place_of_origin}}
+          {{character.place_of_origin}}
+        {{else}}
+          No origin provided.
+        {{/if}}
+      </p>
     </p>
     {{> remove-character id=character.id}}
   </section>

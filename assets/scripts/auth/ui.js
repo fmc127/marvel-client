@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./../store')
+const showCharactersTemplate = require('../templates/character-listing.handlebars')
 
 const onSignUpSuccess = function (response) {
   $('#message').html(response.user.email + ' Successfully signed up')
@@ -70,18 +71,22 @@ const onSignOutFailure = function (response) {
   $('#sign-out').trigger('reset')
 }
 
-const onSearchCharacterSuccess = function (response) {
-  $('#message').text('Found your character!')
-  $('#search-character').trigger('reset')
+const onShowCharacterSuccess = function (data) {
+  $('#showCharactersButton').hide()
+  $('#clearCharactersButton').show()
+  $('#message').text('Behold!')
+  $('#show-character').trigger('reset')
+  const showCharactersHtml = showCharactersTemplate({ characters: data.characters })
+  $('.all-characters').append(showCharactersHtml)
 }
 
-const onSearchCharacterFailure = function (response) {
+const onShowCharacterFailure = function (response) {
   $('#message').text('Could not locate character')
-  $('#search-character').trigger('reset')
+  $('#show-character').trigger('reset')
 }
 
 const onCreateCharacterSuccess = function (response) {
-  $('#message').html('Character created!')
+  $('#message').text('Character created!')
   $('#create-character').trigger('reset')
   console.log('success')
 }
@@ -112,6 +117,25 @@ const onDeleteCharacterFailure = function (response) {
   $('#delete-character').trigger('reset')
 }
 
+const getCharactersSuccess = (data) => {
+  // console.log(data)
+  const showCharactersHtml = showCharactersTemplate({ characters: data.characters })
+  $('#message').text('Behold! Your Superhero!')
+  $('.content').html(showCharactersHtml)
+}
+
+const clearCharacterSuccess = () => {
+  $('#message').text('Cleared Characters!')
+  $('.all-characters').empty()
+  $('#showCharactersButton').show()
+  $('#clearCharactersButton').hide()
+}
+
+const clearCharacterFailure = (error) => {
+  $('#message').text('We aint goin nowhere!')
+  console.error(error)
+}
+
 module.exports = {
   onSignUpFailure,
   onSignUpSuccess,
@@ -121,12 +145,15 @@ module.exports = {
   onChangePasswordFailure,
   onSignOutSuccess,
   onSignOutFailure,
-  onSearchCharacterFailure,
-  onSearchCharacterSuccess,
+  onShowCharacterFailure,
+  onShowCharacterSuccess,
   onCreateCharacterFailure,
   onCreateCharacterSuccess,
   onUpdateCharacterSuccess,
   onUpdateCharacterFailure,
   onDeleteCharacterSuccess,
-  onDeleteCharacterFailure
+  onDeleteCharacterFailure,
+  getCharactersSuccess,
+  clearCharacterSuccess,
+  clearCharacterFailure
 }

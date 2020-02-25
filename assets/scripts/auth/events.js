@@ -4,12 +4,6 @@
 const getFormFields = require('./../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
-// const store = require('./../store')
-// const app = require('./../app')
-// #B this function was called (from app.js). it is an event and its transforming
-// data from what a user typed into the browser, through the form(html),
-// through the event handler(app.js), to here(event.js)
-// clickCell is a variable that is storing a function
 const clickCell = function (event) {
   event.preventDefault()
 }
@@ -32,9 +26,6 @@ const onSignIn = function (event) {
   event.preventDefault()
   // prevents refresh of page
   const form = event.target
-  // form is set to form object(form located index.html)
-  // from form ( in index.html) listener (app.js) listens
-  // for 'submit', if that happens, calls for sign in
   const data = getFormFields(form)
   // gets data from form sign in (located in index.html)
   api.signIn(data)
@@ -59,11 +50,11 @@ const onSignOut = function (event) {
     .catch(ui.onSignOutFailure)
 }
 
-const onSearch = function (event) {
+const onShow = function (event) {
   event.preventDefault()
-  api.searchCharacter()
-    .then(ui.onSearchSuccess)
-    .catch(ui.onSearchFailure)
+  api.showCharacter()
+    .then(ui.onShowCharacterSuccess)
+    .catch(ui.onShowCharacterFailure)
 }
 
 const onCreate = function (event) {
@@ -71,22 +62,38 @@ const onCreate = function (event) {
   const form = event.target
   const data = getFormFields(form)
   api.createCharacter(data)
-    .then(ui.onCreateSuccess)
-    .catch(ui.onCreateFailure)
+    .then(ui.onCreateCharacterSuccess)
+    .catch(ui.onCreateCharacterFailure)
 }
 
 const onUpdate = function (event) {
   event.preventDefault()
   api.updateCharacter()
-    .then(ui.onUpdateSuccess)
-    .catch(ui.onUpdateFailure)
+    .then(ui.onUpdateCharacterSuccess)
+    .catch(ui.onUpdateCharacterFailure)
 }
 
 const onDelete = function (event) {
   event.preventDefault()
-  api.deleteCharacter()
-    .then(ui.onDeleteSuccess)
-    .catch(ui.onDeleteFailure)
+  const id = $(event.target).data('id')
+  api.deleteCharacter(id)
+    .then(function () {
+      onShowCharacter(event)
+    })
+    .catch(ui.failure)
+}
+
+const onClear = function (event) {
+  event.preventDefault()
+  ui.clearCharacterSuccess()
+  // .then(ui.onClearCharacters)
+  // .catch(ui.onClearCharactersFailure)
+}
+
+const addHandlers = () => {
+  $('#getCharactersButton').on('click', onShow)
+  $('#clearCharactersButton').on('click', onClear)
+  $('.content').on('click', '.remove-character', onDelete)
 }
 
 module.exports = {
@@ -97,6 +104,8 @@ module.exports = {
   onSignOut,
   onCreate,
   onUpdate,
-  onSearch,
-  onDelete
+  onShow,
+  onDelete,
+  onClear,
+  addHandlers
 }
