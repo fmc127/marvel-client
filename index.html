@@ -74,11 +74,13 @@
   <form id="update-character">
     <fieldset>
       <legend>Update a Character!</legend>
+      <input name="character[id]" type="text" placeholder="ID">
       <input name="character[alias]" type="text" placeholder="Alias">
       <input name="character[real_name]" type="text" placeholder="Real name">
       <input name="character[super_power]" type="text" placeholder="Superpower">
       <input name="character[place_of_origin]" type="text" placeholder="Place of origin">
       <input type="submit" value="Update">
+
     </fieldset>
   </form>
 
@@ -91,13 +93,11 @@
   </form> -->
 
   <nav>
-      <div class="app-name">What would you like to do?</div>
+      <div class="app-name"></div>
       <div class="all-characters"></div>
       <div class="nav-buttons">
         <button id="showCharactersButton" class="btn btn-info">Show Heros</button>
         <button id="clearCharactersButton" class="btn btn-outline-info">Clear Heros</button>
-        <!-- <button id="deleteCharactersButton" class="btn btn-danger remove-character">Delete Hero!</button> -->
-
       </div>
     </nav>
 

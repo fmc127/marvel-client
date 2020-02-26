@@ -44,7 +44,6 @@ const showCharacter = function () {
   return $.ajax({
     url: config.apiUrl + '/characters',
     method: 'GET'
-    // data: data
   })
 }
 
@@ -61,7 +60,7 @@ const createCharacter = function (data) {
 
 const updateCharacter = function (data) {
   return $.ajax({
-    url: config.apiUrl + '/characters/' + data.id,
+    url: config.apiUrl + '/characters/' + data.character.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -95,9 +94,8 @@ const updateCharacter = function (data) {
 // }
 
 const deleteCharacter = function (event) {
-  console.log(event)
+  // console.log(event)
   const id = $(event.target).data('id')
-  console.log(id)
   return $.ajax({
     url: config.apiUrl + '/characters/' + id,
     method: 'DELETE',

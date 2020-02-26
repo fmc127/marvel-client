@@ -36,6 +36,13 @@
           No origin provided.
         {{/if}}
       </p>
+      <p> Character ID:
+        {{#if character.id}}
+          {{character.id}}
+        {{else}}
+          No data provided.
+        {{/if}}
+      </p>
     </p>
     {{> remove-character id=character.id}}
   </section>

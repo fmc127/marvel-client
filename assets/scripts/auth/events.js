@@ -68,7 +68,8 @@ const onCreate = function (event) {
 
 const onUpdate = function (event) {
   event.preventDefault()
-  api.updateCharacter()
+  const data = getFormFields(event.target)
+  api.updateCharacter(data)
     .then(ui.onUpdateCharacterSuccess)
     .catch(ui.onUpdateCharacterFailure)
 }

@@ -77,6 +77,7 @@ const onShowCharacterSuccess = function (data) {
   $('#message').text('Behold!')
   $('#show-character').trigger('reset')
   const showCharactersHtml = showCharactersTemplate({ characters: data.characters })
+  $('.all-characters').html('')
   $('.all-characters').append(showCharactersHtml)
 }
 
