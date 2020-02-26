@@ -62,6 +62,9 @@ const onSignOutSuccess = function (response) {
   $('#sign-in').show()
   $('#sign-up').show()
   $('#sign-up').trigger('reset')
+  $('#showCharactersButton').hide()
+  $('#clearCharactersButton').hide()
+  $('.all-characters').html('')
 
   store.user = null
   // store.user = response.user
