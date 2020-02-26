@@ -1,7 +1,9 @@
 'use strict'
 
 const store = require('./../store')
+// const events = require('./events')
 const showCharactersTemplate = require('../templates/character-listing.handlebars')
+const api = require('./api')
 
 const onSignUpSuccess = function (response) {
   $('#message').html(response.user.email + ' Successfully signed up')
@@ -80,7 +82,23 @@ const onSignOutFailure = function (response) {
 const onShowCharacterSuccess = function (data) {
   $('#showCharactersButton').hide()
   $('#clearCharactersButton').show()
+  // if (store.updateCharacter === false) {
   $('#message').text('Behold!')
+  // }
+  // store.updateCharacter = false
+  // $('#message').text('Behold!')
+  $('#show-character').trigger('reset')
+  const showCharactersHtml = showCharactersTemplate({ characters: data.characters })
+  $('.all-characters').html('')
+  $('.all-characters').append(showCharactersHtml)
+}
+
+const onReShowCharacters = function (data, message) {
+  // $('#showCharactersButton').hide()
+  // $('#clearCharactersButton').show()
+  $('#message').text(message)
+  store.updateCharacter = false
+  // $('#message').text('Behold!')
   $('#show-character').trigger('reset')
   const showCharactersHtml = showCharactersTemplate({ characters: data.characters })
   $('.all-characters').html('')
@@ -93,8 +111,13 @@ const onShowCharacterFailure = function (response) {
 }
 
 const onCreateCharacterSuccess = function (response) {
-  $('#message').text('Hero created!')
+  // $('#message').text('Hero created!')
   $('#create-character').trigger('reset')
+  api.showCharacter()
+    .then((data) => {
+      onReShowCharacters(data, 'Hero created!')
+    })
+    .catch(onShowCharacterFailure)
   // console.log('success')
 }
 
@@ -104,10 +127,18 @@ const onCreateCharacterFailure = function (response) {
   // console.log('failure')
 }
 
-const onUpdateCharacterSuccess = function (response) {
-  $('#message').text('Updated hero!')
+const onUpdateCharacterSuccess = function (data) {
+  // $('#message').text('Your hero has been updated!')
   $('#update-character').trigger('reset')
+  // $('#message').show()
   $('.all-characters').trigger('reset')
+  $('#create-character').trigger('reset')
+  store.updateCharacter = true
+  api.showCharacter()
+    .then((data) => {
+      onReShowCharacters(data, 'Your hero has been updated!')
+    })
+    .catch(onShowCharacterFailure)
 }
 
 const onUpdateCharacterFailure = function (response) {
@@ -116,8 +147,13 @@ const onUpdateCharacterFailure = function (response) {
 }
 
 const onDeleteCharacterSuccess = function (response) {
-  $('#message').text('Deleted hero!')
+  // $('#message').text('Deleted hero!')
   $('#remove-character').trigger('reset')
+  api.showCharacter()
+    .then((data) => {
+      onReShowCharacters(data, 'Deleted Hero!')
+    })
+    .catch(onShowCharacterFailure)
 }
 
 const onDeleteCharacterFailure = function (response) {

@@ -4,6 +4,7 @@
 const getFormFields = require('./../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
+
 const clickCell = function (event) {
   event.preventDefault()
 }
@@ -22,7 +23,6 @@ const onSignUp = function (event) {
 }
 
 const onSignIn = function (event) {
-  // taking in sign in form from app.js
   event.preventDefault()
   // prevents refresh of page
   const form = event.target
@@ -70,28 +70,16 @@ const onUpdate = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   api.updateCharacter(data)
-    .then(onShow, ui.onUpdateCharacterSuccess)
+    .then(ui.onUpdateCharacterSuccess)
     .catch(ui.onUpdateCharacterFailure)
 }
-
-// const onDelete = function (event) {
-//   event.preventDefault()
-//   // const id = $(event.target).data('id')
-//   api.deleteCharacter(event)
-//     .then(function () {
-//       onShow(event)
-//     })
-//     .catch(ui.failure)
-// }
 
 const onDelete = function (event) {
   event.preventDefault()
   // const id = $(event.target).data('id')
   api.deleteCharacter(event)
-    .then(function () {
-      onShow(event)
-    })
-    .catch(ui.failure)
+    .then(ui.onDeleteCharacterSuccess)
+    .catch(ui.onDeleteCharacterFailure)
 }
 
 const onClear = function (event) {
