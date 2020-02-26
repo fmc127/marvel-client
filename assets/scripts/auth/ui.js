@@ -32,6 +32,7 @@ const onSignInSuccess = function (response) {
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#sign-up').trigger('reset')
+  $('#showCharactersButton').show()
 }
 
 const onSignInFailure = function (response) {

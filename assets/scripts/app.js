@@ -26,5 +26,6 @@ $(() => {
   $('#update-character').on('submit', authEvents.onUpdate)
   $('.remove-character').on('click', authEvents.onDelete)
   $('#create-character').on('submit', authEvents.onCreate)
+  $('#showCharactersButton').hide()
   characterEvents.addHandlers()
 })
