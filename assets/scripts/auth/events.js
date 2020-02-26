@@ -70,7 +70,7 @@ const onUpdate = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   api.updateCharacter(data)
-    .then(ui.onUpdateCharacterSuccess)
+    .then(onShow, ui.onUpdateCharacterSuccess)
     .catch(ui.onUpdateCharacterFailure)
 }
 

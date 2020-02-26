@@ -3,7 +3,7 @@
   <section data-id="{{character.id}}">
     <h6>Character Information:</h6>
     <h3>
-      {{limit character.alias 15}}
+      <!-- {{limit character.alias 15}} -->
     </h3>
     <h6>Alias:</h6>
     <p>
@@ -23,8 +23,8 @@
     </p>
     <h6>Superpower:</h6>
     <p>
-      {{#if character.superpower}}
-        {{character.superpower}}
+      {{#if character.super_power}}
+        {{character.super_power}}
       {{else}}
         No superpower provided.
       {{/if}}

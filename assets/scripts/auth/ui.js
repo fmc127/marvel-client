@@ -65,6 +65,8 @@ const onSignOutSuccess = function (response) {
   $('#showCharactersButton').hide()
   $('#clearCharactersButton').hide()
   $('.all-characters').html('')
+  $('#create-character').trigger('reset')
+  $('#update-character').trigger('reset')
 
   store.user = null
   // store.user = response.user
@@ -86,51 +88,52 @@ const onShowCharacterSuccess = function (data) {
 }
 
 const onShowCharacterFailure = function (response) {
-  $('#message').text('Could not locate characters')
+  $('#message').text('Could not locate hero')
   $('#show-character').trigger('reset')
 }
 
 const onCreateCharacterSuccess = function (response) {
-  $('#message').text('Character created!')
+  $('#message').text('Hero created!')
   $('#create-character').trigger('reset')
   // console.log('success')
 }
 
 const onCreateCharacterFailure = function (response) {
-  $('#message').text('Failed to create character')
+  $('#message').text('Failed to create hero')
   $('#create-character').trigger('reset')
   // console.log('failure')
 }
 
 const onUpdateCharacterSuccess = function (response) {
-  $('#message').text('Updated Character!')
+  $('#message').text('Updated hero!')
   $('#update-character').trigger('reset')
+  $('.all-characters').trigger('reset')
 }
 
 const onUpdateCharacterFailure = function (response) {
-  $('#message').text('Failed to update character')
+  $('#message').text('Failed to update hero')
   $('#update-character').trigger('reset')
 }
 
 const onDeleteCharacterSuccess = function (response) {
-  $('#message').text('Deleted Character!')
+  $('#message').text('Deleted hero!')
   $('#remove-character').trigger('reset')
 }
 
 const onDeleteCharacterFailure = function (response) {
-  $('#message').text('Failed to delete character')
+  $('#message').text('Failed to delete hero!')
   $('#remove-character').trigger('reset')
 }
 
 const getCharactersSuccess = (data) => {
   // console.log(data)
   const showCharactersHtml = showCharactersTemplate({ characters: data.characters })
-  $('#message').text('Behold! Your Superhero!')
+  $('#message').text('Behold!')
   $('.content').html(showCharactersHtml)
 }
 
 const clearCharacterSuccess = () => {
-  $('#message').text('Cleared Characters!')
+  $('#message').text('Cleared Heros!')
   $('.all-characters').empty()
   $('#showCharactersButton').show()
   $('#clearCharactersButton').hide()
