@@ -41,9 +41,12 @@
         {{else}}
           No data provided.
         {{/if}}
+        {{#if character.editable}}
+          {{> remove-character id=character.id}}
+        {{/if}}
       </p>
     </p>
-    {{> remove-character id=character.id}}
+    <!-- {{> remove-character id=character.id}} -->
   </section>
 
 {{/each}}

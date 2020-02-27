@@ -43,7 +43,10 @@ const signOut = function (data) {
 const showCharacter = function () {
   return $.ajax({
     url: config.apiUrl + '/characters',
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
