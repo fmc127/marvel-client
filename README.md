@@ -3,15 +3,20 @@
 **Description**
 This is an application for creating, editing, and viewing superheros. A user can create a superhero with an alias, real name, superpower, and place of origin.
 
-The front end is hosted at this github pages link: https://fmc127.github.io/marvel-client/
+The front end is hosted at this link for [github pages](https://fmc127.github.io/marvel-client/)
 
-The back end API is hosted at this heroku link: https://marvel-database.herokuapp.com/
+The back end API is hosted at this link for [heroku](https://marvel-database.herokuapp.com/)
+
 
 **Important Links**
 
-- [Deployed Client] https://fmc127.github.io/marvel-client/
+- [Deployed Client](https://fmc127.github.io/marvel-client/)
+-
+- [Deployed API](https://marvel-database.herokuapp.com/)
 
-- [Deployed API] https://marvel-database.herokuapp.com/
+- [Back End Repo](https://github.com/fmc127/marvel-api)
+
+
 
 **Planning and Development**
 
@@ -42,18 +47,25 @@ As a user I want to be able to delete a superhero.
 As a user I want to be the only user to make changed to my superheros.
 As a user I want to be able to view a list of my superheros.
 
+**Problem Solving Strategy**
+- Check for errors in the console and the terminal. Follow the error codes if they exist.
+- If there are no errors, follow the flow of data to check for issues.
+
 **Technologies Utilized**
 Front-end:
 JavaScript, jQuery, AJAX, HTML, CSS, Handlebars, Git.
 
 Back-end:
-Ruby, Ruby on Rails, Posgres
+Ruby, Ruby on Rails, Posgresql, Git, Heroku
 
 **Unsolved Issues & Future Goals**
 For the front end I would like to improve the CSS.
 
 **Wireframe**
 https://imgur.com/a/WBrwyXZ
+
+**Entity Relationship Diagram (ERD):**
+https://imgur.com/IIt5Ars
 
 Author
 Jon McCoy
