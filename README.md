@@ -10,7 +10,7 @@ The back end API is hosted at this heroku link: https://marvel-database.herokuap
 **Important Links**
 
 - [Deployed Client] https://fmc127.github.io/marvel-client/
--
+
 - [Deployed API] https://marvel-database.herokuapp.com/
 
 **Planning and Development**
