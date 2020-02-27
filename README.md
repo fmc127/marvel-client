@@ -5,7 +5,7 @@ This is an application for creating, editing, and viewing superheros. A user can
 
 The front end is hosted at this github pages link: https://fmc127.github.io/marvel-client/
 
-The back end API is hosted at this heroku link:
+The back end API is hosted at this heroku link: https://marvel-database.herokuapp.com/
 
 **Important Links**
 
