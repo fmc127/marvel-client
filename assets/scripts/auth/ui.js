@@ -86,7 +86,6 @@ const onShowCharacterSuccess = function (data) {
   $('#clearCharactersButton').show()
   // if (store.updateCharacter === false) {
   $('#message').text('Behold!')
-  // }
   // store.updateCharacter = false
   // $('#message').text('Behold!')
   $('#show-character').trigger('reset')
@@ -186,9 +185,8 @@ const onShowVehicleSuccess = function (data) {
   $('#showVehiclesButton').hide()
   $('#clearVehiclesButton').show()
   // if (store.updatevehicle === false) {
-  $('#message').text('Behold!')
-  // }
-  // store.updateVehicle = false
+  $('#message').text('Vehicles! HUZZAH!')
+
   $('#show-vehicle').trigger('reset')
   const showVehiclesHtml = showVehiclesTemplate({ vehicles: data.vehicles })
   $('.all-vehicles').html('')
@@ -202,7 +200,6 @@ const onReShowVehicles = function (data, message) {
   store.updateVehicle = false
   // $('#message').text('Behold!')
   $('#show-vehicle').trigger('reset')
-  console.log(data)
   const showVehiclesHtml = showVehiclesTemplate({ vehicles: data.vehicles })
   $('.all-vehicles').html('')
   $('.all-vehicles').append(showVehiclesHtml)
@@ -215,7 +212,6 @@ const onShowVehicleFailure = function (response) {
 
 const onCreateVehicleSuccess = function (response) {
   $('#create-vehicle').trigger('reset')
-  console.log(response)
   api.showVehicle()
     .then((data) => {
       onReShowVehicles(data, 'Vehicle created!')
@@ -226,7 +222,6 @@ const onCreateVehicleSuccess = function (response) {
 
 const onCreateVehicleFailure = function (response) {
   $('#message').text('Failed to create vehicle')
-  console.log(response)
   $('#create-vehicle').trigger('reset')
   // console.log('failure')
 }

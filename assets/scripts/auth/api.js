@@ -95,7 +95,6 @@ const showVehicle = function () {
 }
 
 const createVehicle = function (data) {
-  console.log(store.user)
   return $.ajax({
     url: config.apiUrl + '/vehicles',
     method: 'POST',

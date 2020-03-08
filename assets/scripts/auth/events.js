@@ -37,7 +37,6 @@ const onChangePassword = function (event) {
   event.preventDefault()
   const form = event.target
   const data = getFormFields(form)
-  // console.log(data)
   api.changePassword(data)
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
@@ -109,7 +108,6 @@ const onCreateV = function (event) {
 const onUpdateV = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   api.updateVehicle(data)
     .then(ui.onUpdateVehicleSuccess)
     .catch(ui.onUpdateVehicleFailure)
