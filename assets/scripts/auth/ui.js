@@ -3,6 +3,8 @@
 const store = require('./../store')
 // const events = require('./events')
 const showCharactersTemplate = require('../templates/character-listing.handlebars')
+const showVehiclesTemplate = require('../templates/vehicle-listing.handlebars')
+
 const api = require('./api')
 
 const onSignUpSuccess = function (response) {
@@ -180,6 +182,106 @@ const clearCharacterFailure = (error) => {
   console.error(error)
 }
 
+const onShowVehicleSuccess = function (data) {
+  $('#showVehiclesButton').hide()
+  $('#clearVehiclesButton').show()
+  // if (store.updatevehicle === false) {
+  $('#message').text('Behold!')
+  // }
+  // store.updateVehicle = false
+  $('#show-vehicle').trigger('reset')
+  const showVehiclesHtml = showVehiclesTemplate({ vehicles: data.vehicles })
+  $('.all-vehicles').html('')
+  $('.all-vehicles').append(showVehiclesHtml)
+}
+
+const onReShowVehicles = function (data, message) {
+  // $('#showVehiclesButton').hide()
+  // $('#clearVehiclesButton').show()
+  $('#message').text(message)
+  store.updateVehicle = false
+  // $('#message').text('Behold!')
+  $('#show-vehicle').trigger('reset')
+  console.log(data)
+  const showVehiclesHtml = showVehiclesTemplate({ vehicles: data.vehicles })
+  $('.all-vehicles').html('')
+  $('.all-vehicles').append(showVehiclesHtml)
+}
+
+const onShowVehicleFailure = function (response) {
+  $('#message').text('Could not locate vehicle')
+  $('#show-vehicle').trigger('reset')
+}
+
+const onCreateVehicleSuccess = function (response) {
+  $('#create-vehicle').trigger('reset')
+  console.log(response)
+  api.showVehicle()
+    .then((data) => {
+      onReShowVehicles(data, 'Vehicle created!')
+    })
+    .catch(onShowVehicleFailure)
+  // console.log('success')
+}
+
+const onCreateVehicleFailure = function (response) {
+  $('#message').text('Failed to create vehicle')
+  console.log(response)
+  $('#create-vehicle').trigger('reset')
+  // console.log('failure')
+}
+
+const onUpdateVehicleSuccess = function (data) {
+  $('#update-vehicle').trigger('reset')
+  // $('#message').show()
+  $('.all-vehicles').trigger('reset')
+  store.updateVehicle = true
+  api.showVehicle()
+    .then((data) => {
+      onReShowVehicles(data, 'Your vehicle has been updated!')
+    })
+    .catch(onShowVehicleFailure)
+}
+
+const onUpdateVehicleFailure = function (response) {
+  $('#message').text('Failed to update vehicle')
+  $('#update-vehicle').trigger('reset')
+}
+
+const onDeleteVehicleSuccess = function (response) {
+  // $('#message').text('Deleted hero!')
+  $('#remove-vehicle').trigger('reset')
+  api.showVehicle()
+    .then((data) => {
+      onReShowVehicles(data, 'Deleted Vehicle!')
+    })
+    .catch(onShowVehicleFailure)
+}
+
+const onDeleteVehicleFailure = function (response) {
+  $('#message').text('Failed to delete vehicle!')
+  $('#remove-vehicle').trigger('reset')
+}
+
+const getVehiclesSuccess = (data) => {
+  // console.log(data)
+  const showVehiclesHtml = showVehiclesTemplate({ vehicles: data.vehicles })
+  $('#message').text('Here are your vehicles!')
+  $('.content').html(showVehiclesHtml)
+}
+
+const clearVehicleSuccess = () => {
+  $('#message').text('Cleared Vehicles!')
+  $('.all-vehicles').empty()
+  $('#showVehiclesButton').show()
+  $('#clearVehiclesButton').hide()
+}
+
+const clearVehicleFailure = (error) => {
+  $('#message').text('Failed to clear vehicles!')
+  console.error(error)
+}
+
 module.exports = {
   onSignUpFailure,
   onSignUpSuccess,
@@ -199,5 +301,16 @@ module.exports = {
   onDeleteCharacterFailure,
   getCharactersSuccess,
   clearCharacterSuccess,
-  clearCharacterFailure
+  clearCharacterFailure,
+  clearVehicleSuccess,
+  clearVehicleFailure,
+  getVehiclesSuccess,
+  onDeleteVehicleSuccess,
+  onDeleteVehicleFailure,
+  onCreateVehicleSuccess,
+  onCreateVehicleFailure,
+  onUpdateVehicleSuccess,
+  onUpdateVehicleFailure,
+  onShowVehicleSuccess,
+  onShowVehicleFailure
 }

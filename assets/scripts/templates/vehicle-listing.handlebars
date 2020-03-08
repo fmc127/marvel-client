@@ -1,0 +1,34 @@
+{{#each vehicles as |vehicle|}}
+  <section data-id="{{character.id}}">
+    <h6>Vehicle Information:</h6>
+    <h6>Name:</h6>
+    <p>
+      {{#if vehicle.name}}
+        {{vehicle.name}}
+      {{else}}
+        No name provided.
+      {{/if}}
+    </p>
+    <h6>color:</h6>
+    <p>
+      {{#if vehicle.color}}
+        {{vehicle.color}}
+      {{else}}
+        No color provided.
+      {{/if}}
+    </p>
+      <p> Vehicle ID:
+        {{#if vehicle.id}}
+          {{vehicle.id}}
+        {{else}}
+          No data provided.
+        {{/if}}
+        {{#if vehicle.editable}}
+          {{> remove-vehicle id=vehicle.id}}
+        {{/if}}
+      </p>
+    </p>
+    <!-- {{> remove-character id=character.id}} -->
+  </section>
+
+{{/each}}

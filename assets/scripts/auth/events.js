@@ -85,14 +85,56 @@ const onDelete = function (event) {
 const onClear = function (event) {
   event.preventDefault()
   ui.clearCharacterSuccess()
+  ui.clearVehicleSuccess()
   // .then(ui.onClearCharacters)
   // .catch(ui.onClearCharactersFailure)
+}
+
+const onShowV = function (event) {
+  event.preventDefault()
+  api.showVehicle()
+    .then(ui.onShowVehicleSuccess)
+    .catch(ui.onShowVehicleFailure)
+}
+
+const onCreateV = function (event) {
+  event.preventDefault()
+  const form = event.target
+  const data = getFormFields(form)
+  api.createVehicle(data)
+    .then(ui.onCreateVehicleSuccess)
+    .catch(ui.onCreateVehicleFailure)
+}
+
+const onUpdateV = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.updateVehicle(data)
+    .then(ui.onUpdateVehicleSuccess)
+    .catch(ui.onUpdateVehicleFailure)
+}
+
+const onDeleteV = function (event) {
+  event.preventDefault()
+  api.deleteVehicle(event)
+    .then(ui.onDeleteVehicleSuccess)
+    .catch(ui.onDeleteVehicleFailure)
+}
+
+const onClearV = function (event) {
+  event.preventDefault()
+  ui.clearVehicleSuccess()
+  // .then(ui.onClearVehicleSuccess)
+  // .catch(ui.onClearVehicleFailure)
 }
 
 const addHandlers = () => {
   $('#getCharactersButton').on('click', onShow)
   $('#clearCharactersButton').on('click', onClear)
   $('.all-characters').on('click', '.remove-character', onDelete)
+  $('#getVehiclesButton').on('click', onShowV)
+  $('#clearVehiclesButton').on('click', onClearV)
+  $('.all-vehicles').on('click', '.remove-vehicle', onDeleteV)
 }
 
 module.exports = {
@@ -106,5 +148,10 @@ module.exports = {
   onShow,
   onDelete,
   onClear,
-  addHandlers
+  addHandlers,
+  onShowV,
+  onClearV,
+  onDeleteV,
+  onUpdateV,
+  onCreateV
 }
