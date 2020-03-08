@@ -123,6 +123,7 @@ const onShowCharacterFailure = function (response) {
 const onCreateCharacterSuccess = function (response) {
   // $('#message').text('Hero created!')
   $('#create-character').trigger('reset')
+  $('#change-password').trigger('reset')
   $('#showCharactersButton').hide()
   $('#clearCharactersButton').show()
   api.showCharacter()
@@ -142,9 +143,11 @@ const onCreateCharacterFailure = function (response) {
 const onUpdateCharacterSuccess = function (data) {
   // $('#message').text('Your hero has been updated!')
   $('#update-character').trigger('reset')
-  // $('#message').show()
+  $('#change-password').trigger('reset')
   $('.all-characters').trigger('reset')
   $('#create-character').trigger('reset')
+  $('#update-vehicle').trigger('reset')
+  $('#create-vehicle').trigger('reset')
   store.updateCharacter = true
   api.showCharacter()
     .then((data) => {
@@ -223,6 +226,14 @@ const onShowVehicleFailure = function (response) {
 
 const onCreateVehicleSuccess = function (response) {
   $('#create-vehicle').trigger('reset')
+  $('#change-password').trigger('reset')
+  $('#create-character').trigger('reset')
+  $('#update-vehicle').trigger('reset')
+  $('#create-vehicle').trigger('reset')
+  $('#showVehiclesButton').hide()
+  $('#clearVehiclesButton').show()
+  $('#update-character').trigger('reset')
+
   api.showVehicle()
     .then((data) => {
       onReShowVehicles(data, 'Vehicle created!')
@@ -239,8 +250,13 @@ const onCreateVehicleFailure = function (response) {
 
 const onUpdateVehicleSuccess = function (data) {
   $('#update-vehicle').trigger('reset')
-  // $('#message').show()
   $('.all-vehicles').trigger('reset')
+  $('#change-password').trigger('reset')
+  $('#create-character').trigger('reset')
+  $('#create-vehicle').trigger('reset')
+  $('#update-character').trigger('reset')
+  $('#showVehiclesButton').hide()
+  $('#clearVehiclesButton').show()
   store.updateVehicle = true
   api.showVehicle()
     .then((data) => {
