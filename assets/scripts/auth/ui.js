@@ -78,6 +78,8 @@ const onSignOutSuccess = function (response) {
   $('#showVehiclesButton').hide()
   $('#clearVehiclesButton').hide()
   $('.all-vehicles').empty()
+  $('#create-vehicle').trigger('reset')
+  $('#update-vehicle').trigger('reset')
 
   store.user = null
   // store.user = response.user
