@@ -37,6 +37,9 @@ const onSignInSuccess = function (response) {
   $('#sign-up').hide()
   $('#sign-up').trigger('reset')
   $('#showCharactersButton').show()
+  $('#create-vehicle').show()
+  $('#update-vehicle').show()
+  $('#showVehiclesButton').show()
 }
 
 const onSignInFailure = function (response) {
@@ -71,6 +74,11 @@ const onSignOutSuccess = function (response) {
   $('.all-characters').html('')
   $('#create-character').trigger('reset')
   $('#update-character').trigger('reset')
+  $('#create-vehicle').hide()
+  $('#update-vehicle').hide()
+  $('#showVehiclesButton').hide()
+  $('#clearVehiclesButton').hide()
+  $('.all-vehicles').empty()
 
   store.user = null
   // store.user = response.user
