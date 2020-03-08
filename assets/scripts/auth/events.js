@@ -84,7 +84,6 @@ const onDelete = function (event) {
 const onClear = function (event) {
   event.preventDefault()
   ui.clearCharacterSuccess()
-  ui.clearVehicleSuccess()
   // .then(ui.onClearCharacters)
   // .catch(ui.onClearCharactersFailure)
 }

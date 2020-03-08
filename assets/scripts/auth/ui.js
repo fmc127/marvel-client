@@ -1,7 +1,6 @@
 'use strict'
 
 const store = require('./../store')
-// const events = require('./events')
 const showCharactersTemplate = require('../templates/character-listing.handlebars')
 const showVehiclesTemplate = require('../templates/vehicle-listing.handlebars')
 
@@ -122,6 +121,8 @@ const onShowCharacterFailure = function (response) {
 const onCreateCharacterSuccess = function (response) {
   // $('#message').text('Hero created!')
   $('#create-character').trigger('reset')
+  $('#showCharactersButton').hide()
+  $('#clearCharactersButton').show()
   api.showCharacter()
     .then((data) => {
       onReShowCharacters(data, 'Hero created!')
