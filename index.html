@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Superhero Log</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <h1>Superhero Log</h1>
+
+  <div id='message'></div>
+  <form id="sign-in">
+    <fieldset>
+      <legend>Sign In!</legend>
+      <input name="credentials[email]" type="email" placeholder="Email">
+      <input name="credentials[password]" type="password" placeholder="Password">
+      <input type="submit" value="Sign In!">
+    </fieldset>
+  </form>
+
+  <form id="sign-up">
+    <fieldset>
+      <legend>Sign Up!</legend>
+      <input name="credentials[email]" type="email" placeholder="example@example.com">
+      <input name="credentials[password]" type="password" placeholder="Password">
+      <input name="credentials[password_confirmation]" type="password" placeholder="Confirm Password">
+      <input type="submit" value="Sign Up!">
+    </fieldset>
+  </form>
+
+  <form id="change-password">
+    <fieldset>
+      <legend>Change Password!</legend>
+      <input name="passwords[old]" type="password" placeholder="Old Password" required>
+      <input name="passwords[new]" type="password" placeholder="New Password" required>
+      <input type="submit" value="Change Password!">
+    </fieldset>
+  </form>
+
+  <form id="sign-out">
+    <fieldset>
+      <legend>Sign Out</legend>
+      <input type="submit" value="Sign Out!">
+    </fieldset>
+  </form>
+<!--
+  <form id="show-character">
+    <fieldset>
+      <legend>Show Characters!</legend>
+      <input name="character[character]" type="text" placeholder="Alias">
+      <input type="submit" value="Show!">
+    </fieldset>
+  </form> -->
+
+  <form id="create-character">
+    <fieldset>
+      <legend>Create a Hero!</legend>
+      <input name="character[alias]" type="text" placeholder="Alias" required>
+      <input name="character[real_name]" type="text" placeholder="Real name" required>
+      <input name="character[super_power]" type="text" placeholder="Superpower" required>
+      <input name="character[place_of_origin]" type="text" placeholder="Place of origin" required>
+      <input type="submit" value="Create">
+    </fieldset>
+  </form>
+
+  <form id="update-character">
+    <fieldset>
+      <legend>Update a Hero!</legend>
+      <input name="character[id]" type="text" placeholder="ID" required>
+      <input name="character[alias]" type="text" placeholder="Alias" required>
+      <input name="character[real_name]" type="text" placeholder="Real name" required>
+      <input name="character[super_power]" type="text" placeholder="Superpower" required>
+      <input name="character[place_of_origin]" type="text" placeholder="Place of origin" required>
+      <input type="submit" value="Update">
+    </fieldset>
+  </form>
+
+  <form id="create-vehicle">
+    <fieldset>
+      <legend>Create a Vehicle!</legend>
+      <input name="vehicle[name]" type="text" placeholder="Name" required>
+      <input name="vehicle[color]" type="text" placeholder="Color" required>
+      <input type="submit" value="Create">
+    </fieldset>
+  </form>
+
+  <form id="update-vehicle">
+    <fieldset>
+      <legend>Update a Vehicle!</legend>
+      <input name="vehicle[id]" type="text" placeholder="ID" required>
+      <input name="vehicle[name]" type="text" placeholder="Name" required>
+      <input name="vehicle[color]" type="text" placeholder="Color" required>
+      <input type="submit" value="Update">
+    </fieldset>
+  </form>
+
+  <nav>
+      <div class="app-name"></div>
+      <div class="all-characters"></div>
+      <div class="nav-buttons">
+        <button id="showCharactersButton" class="btn btn-info">Show Heros</button>
+        <button id="clearCharactersButton" class="btn btn-outline-info">Clear Heros</button>
+      </div>
+  </nav>
+
+  <nav>
+        <div class="app-name2"></div>
+        <div class="all-vehicles"></div>
+        <div class="nav-buttons2">
+          <button id="showVehiclesButton" class="btn btn-info">Show Vehicles</button>
+          <button id="clearVehiclesButton" class="btn btn-outline-info">Clear Vehicles</button>
+        </div>
+    </nav>
+
+</body>
+</html>
