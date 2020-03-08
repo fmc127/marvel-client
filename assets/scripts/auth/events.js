@@ -109,6 +109,7 @@ const onCreateV = function (event) {
 const onUpdateV = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  console.log(data)
   api.updateVehicle(data)
     .then(ui.onUpdateVehicleSuccess)
     .catch(ui.onUpdateVehicleFailure)

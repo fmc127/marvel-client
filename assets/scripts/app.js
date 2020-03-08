@@ -31,6 +31,7 @@ $(() => {
   $('#clearVehiclesButton').on('click', authEvents.onClearV)
   $('#update-vehicle').on('submit', authEvents.onUpdateV)
   $('#create-vehicle').on('submit', authEvents.onCreateV)
+  $('.remove-vehicle').on('click', authEvents.onDeleteV)
 
   characterEvents.addHandlers()
 })

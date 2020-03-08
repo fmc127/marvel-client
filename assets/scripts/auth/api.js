@@ -121,7 +121,7 @@ const deleteVehicle = function (event) {
   // console.log(event)
   const id = $(event.target).data('id')
   return $.ajax({
-    url: config.apiUrl + '/vehicles' + id,
+    url: config.apiUrl + '/vehicles/' + id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
