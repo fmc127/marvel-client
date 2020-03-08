@@ -2,15 +2,17 @@
 
 .nav-buttons2 {
   display: flex;
-  justify-content: center;
+  display: block;
 }
 
 .all-characters {
   float: left;
   display: block;
+  display: flex;
 }
 
 .all-vehicles {
-  float: right;
+  float: left;
   display: block;
+  display: flex;
 }
