@@ -126,6 +126,10 @@ const onCreateCharacterSuccess = function (response) {
   $('#change-password').trigger('reset')
   $('#showCharactersButton').hide()
   $('#clearCharactersButton').show()
+  $('#update-vehicle').trigger('reset')
+  $('#create-vehicle').trigger('reset')
+  $('#update-character').trigger('reset')
+
   api.showCharacter()
     .then((data) => {
       onReShowCharacters(data, 'Hero created!')
