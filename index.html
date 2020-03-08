@@ -63,10 +63,10 @@
   <form id="create-character">
     <fieldset>
       <legend>Create a Hero!</legend>
-      <input name="character[alias]" type="text" placeholder="Alias">
-      <input name="character[real_name]" type="text" placeholder="Real name">
-      <input name="character[super_power]" type="text" placeholder="Superpower">
-      <input name="character[place_of_origin]" type="text" placeholder="Place of origin">
+      <input name="character[alias]" type="text" placeholder="Alias" required>
+      <input name="character[real_name]" type="text" placeholder="Real name" required>
+      <input name="character[super_power]" type="text" placeholder="Superpower" required>
+      <input name="character[place_of_origin]" type="text" placeholder="Place of origin" required>
       <input type="submit" value="Create">
     </fieldset>
   </form>
@@ -86,8 +86,8 @@
   <form id="create-vehicle">
     <fieldset>
       <legend>Create a Vehicle!</legend>
-      <input name="vehicle[name]" type="text" placeholder="Name">
-      <input name="vehicle[color]" type="text" placeholder="Color">
+      <input name="vehicle[name]" type="text" placeholder="Name" required>
+      <input name="vehicle[color]" type="text" placeholder="Color" required>
       <input type="submit" value="Create">
     </fieldset>
   </form>
